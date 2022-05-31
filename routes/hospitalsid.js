@@ -8,7 +8,15 @@ const arr = containFields.split(',');
 // console.log(arr)
 
 //optimization :)
-const loopThroughAll = (id,data, res) => 
+
+const whole = (id) => {
+   let x = "";
+    for ( i = 0; i < arr.length; i++){
+        x += arr[i] + " : " + jsonArray[id][arr[i]] + " | ";
+    }
+    return x;
+}
+const loopThroughAll = (id,data,res) => 
 {
 let i;
 let j;
@@ -17,8 +25,9 @@ let j;
                 if(jsonArray[j]['FacilityName'].toLowerCase() == id.toLowerCase())
                 {
                     // console.log(id.toLowerCase())
-                    if(data == 'whole'){
-                        res.render("info", {text: jsonArray[j]})
+                    if(data == 'whole')
+                    {
+                        res.render("info", {text: whole(j)})
                     }
                     else{
                     for(i = 0; i < arr.length; i++)
